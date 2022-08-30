@@ -12,17 +12,17 @@
 <script>
 import axios from "axios";
 export default {
-  asyncData({ params, error }) {
+  asyncData({ params, error, $http }) {
     console.log('params', params)
     let { id } = params
-    return axios
-      // .get(`/admin/pc/esaleShow/getShowDetail.do?id=${id}`)
-      .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getShowDetail.do?id=${id}`)
-      .then(res => {
-        console.log(234, res.data.data)
-        return { detailData: res.data.data }
-      })
-      .catch(e => {
+    return $http
+        // .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getShowDetail.do?id=${id}`)
+      .get(`/admin/pc/esaleShow/getShowDetail.do`, {
+        id: id
+      }).then(res => {
+        console.log(234, res.data)
+        return { detailData: res.data }
+      }).catch(e => {
         error({ statusCode: 404, message: 'Post not found' })
       })
   },

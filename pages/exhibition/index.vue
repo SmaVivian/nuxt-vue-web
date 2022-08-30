@@ -47,16 +47,19 @@ export default {
   //     searchList,
   //   }
   // },
-  asyncData({ params, error }) {
+  asyncData({ params, error, $http }) {
     console.log('params', params)
-    return axios
-      // .get(`/admin/pc/esaleShow/getListData.do?type=1&museumId=&currentPage=1&size=9`)  // 本地用
-      .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do?type=1&museumId=&currentPage=1&size=9`)  // 打包用
-      .then(res => {
-        console.log(234, res.data.data)
-        return { dataList: res.data.data }
-      })
-      .catch(e => {
+    // return axios
+    return $http
+      .get(`/admin/pc/esaleShow/getListData.do`, {
+        type: 1,
+        museumId: '',
+        currentPage: 1,
+        size: 10
+      }).then(res => {
+        console.log(234, res)
+        return { dataList: res.data }
+      }).catch(e => {
         error({ statusCode: 404, message: 'Post not found' })
       })
   },
@@ -71,15 +74,11 @@ export default {
       console.log(111)
     },
     toDetail(id) {
-      // 本地用
-      // this.$router.push({
-      //   // path: `/exhibition/${id}`
-      //   path: `/exhibition/${id}` + '/index.html'
-      // })
-      
-      // 打包用
+      this.$router.push({
+        path: `/exhibition/${id}`
+      })
       // 静态部署、新开页面跳转
-      window.open(`/exhibition/${id}` + '/index.html')
+      // window.open(`/exhibition/${id}` + '/index.html')
     },
   },
   mounted() {
