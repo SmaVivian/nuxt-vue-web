@@ -46,14 +46,17 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    'element-ui/lib/theme-chalk/index.css'
+    // 'element-ui/lib/theme-chalk/index.css',
+    '~/assets/css/reset.css',
+    '~/assets/scss/theme.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/element-ui',
     '~/plugins/axios',
-    '~/plugins/http'
+    '~/plugins/http',
+    '~/plugins/vue-global.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -67,8 +70,14 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/style-resources'
   ],
+  styleResources: {
+    scss: [
+      '~/assets/scss/variable.scss'
+    ]
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308

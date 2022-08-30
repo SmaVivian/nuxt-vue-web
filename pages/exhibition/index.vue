@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <div class="page-a">
+    <p class="name ell" style="width:200px">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo asperiores, eveniet non beatae earum hic ipsam! Soluta vero cupiditate vitae blanditiis debitis asperiores iste sed, molestiae libero amet impedit. Amet?</p>
+    <el-button type="primary">同意</el-button>
+
     <div v-for="(item, i) in dataList" :key="i">
       <p @click="toDetail(item.id)">名称：{{item && item.showName}}</p>
 
@@ -86,3 +89,11 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.page-a {
+  .name {
+    color: red;
+  }
+}
+</style>
