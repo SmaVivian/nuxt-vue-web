@@ -3,6 +3,27 @@ export default {
     port: 8085, // default: 3000
     host: '0.0.0.0', // default: localhost
   },
+
+  generate: {
+    // dir: "generateDist",
+    // concurrency: 10,
+    // interval: 100,
+    // crawler: false,
+    // routes() {}
+    // dir：我们生成的静态文件的目录，
+    // concurrency：我们在批量生成文件的时候一次产生的文件数量，
+    // interval：批量生成文件间隔，
+    // crawler：比如我们的页面中有a链接的话，会生成a链接指向的页面的静态页面（早期版本没有提供这个属性），
+    // routes：我们想要生成静态页面对应的vue文件路由，它返回一个数组对象
+    routes: [
+      "exhibition/201904171043221005",
+      "exhibition/201812131041341000",
+      "exhibition/201812131039131000",
+      // "products/categories/1/page/1",
+      // "products/page/1"
+    ]
+  },
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -47,9 +68,21 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
+  // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
   axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    // baseURL: '/',
+    proxy: true,
+  },
+ 
+  proxy: {
+    '/admin': { 
+      target: 'http://www.jnmuseum.com', // 目标接口域名
+      ws: false,
+      changeOrigin: true
+      // pathRewrite: {
+      //   '^/admin': '/', // 把 /api 替换成 /
+      // }    
+    },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
