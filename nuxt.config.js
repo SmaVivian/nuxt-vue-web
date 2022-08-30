@@ -1,15 +1,19 @@
-import env from './env'
+// import env from './env'
 export default {
   server: {
     port: 8085, // default: 3000
     host: '0.0.0.0', // default: localhost
   },
 
-  env: {
-    // baseUrl: 'http://127.0.0.1:8087'
-    baseUrl: env[process.env.NODE_ENV].BASE_API,
-    NODE_ENV: env[process.env.NODE_ENV].NODE_ENV
-  },
+  // env: {
+  //   // baseUrl: 'http://127.0.0.1:8087'
+  //   baseUrl: '/admin',
+  //   // baseUrl: env[process.env.NODE_ENV].BASE_API,
+  //   NODE_ENV: env[process.env.NODE_ENV].NODE_ENV
+  // },
+  // env: {
+  //   baseUrl: 'http://127.0.0.1:8085'
+  // },
 
   generate: {
     // dir: "generateDist",
@@ -58,12 +62,29 @@ export default {
     '~/assets/scss/theme.scss'
   ],
 
+  // router: {
+  //   middleware: 'i18n'
+  //   //   mode: 'hash', // 使用 'hash' 主要是为了适配以相对路径打开的静态站点， 必须使用 'hash' 否则路由跳转不生效
+  //   //   // base: '/moli/',
+  //   //   // base: process.env.NODE_ENV === 'pro' ? './' : '/', // 使用 './' 主要是为了适配以相对路径打开的静态站点
+  //   //   extendRoutes(routes, resolve) {
+  //   //     routes.push({
+  //   //       path: '/',
+  //   //       redirect: {
+  //   //         name: 'home'
+  //   //         // name: 'exhibition'
+  //   //       }
+  //   //     })
+  //   //   }
+  // },
+
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/element-ui',
     '~/plugins/axios',
     '~/plugins/http',
-    '~/plugins/vue-global.js'
+    '~/plugins/vue-global.js',
+    '~/plugins/i18n.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -90,7 +111,7 @@ export default {
   // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
   axios: {
     proxy: true,
-    // baseURL: '/',
+    // baseURL: '/admin',
     // baseURL: `http://${process.env.HOST || "localhost"}:${
     //   process.env.PORT || 3000
     // }`,
@@ -111,5 +132,6 @@ export default {
   build: {
     transpile: [/^element-ui/],
     vendor: ['axios']
+    // vendor: ['vue-i18n'] // webpack vue-i18n.bundle.js
   }
 }

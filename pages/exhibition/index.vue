@@ -4,6 +4,19 @@
     <p class="name ell" style="width:200px">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo asperiores, eveniet non beatae earum hic ipsam! Soluta vero cupiditate vitae blanditiis debitis asperiores iste sed, molestiae libero amet impedit. Amet?</p>
     <el-button type="primary">同意</el-button>
 
+    <p>跳转1不推荐</p>
+    <div v-for="(item, i) in dataList" :key="i">
+      <!-- <p @click="toDetail(item.id)">名称：{{item && item.showName}}</p> -->
+      <nuxt-link :to="`/exhibition/${item.id}`">{{item.showName}}</nuxt-link>
+
+      <!-- 推荐使用nuxt-link，跳转页面，更利于seo收录，使用this.$router.push跳转相同路由存在一些问题。 -->
+      <!-- <nuxt-link :to="`/new/${item.id}`" :title="item.title">
+      </nuxt-link> -->
+    </div>
+    <br>
+    <br>
+
+    <p>跳转2不推荐</p>
     <div v-for="(item, i) in dataList" :key="i">
       <p @click="toDetail(item.id)">名称：{{item && item.showName}}</p>
 
@@ -56,7 +69,7 @@ export default {
     console.log('params', params)
     // return axios
     return $http
-      .get(`/pc/esaleShow/getListData.do`, {
+      .get(`/admin/pc/esaleShow/getListData.do`, {
         type: 1,
         museumId: '',
         currentPage: 1,
