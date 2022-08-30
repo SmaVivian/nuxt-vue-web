@@ -64,21 +64,17 @@ export default {
   //     searchList,
   //   }
   // },
-  asyncData({ params, error, $http }) {
-    console.log('env', process.env.NODE_ENV)
+  asyncData({ params, $request }) {
     console.log('params', params)
-    // return axios
-    return $http
+    return $request
       .get(`/admin/pc/esaleShow/getListData.do`, {
         type: 1,
         museumId: '',
         currentPage: 1,
         size: 10
       }).then(res => {
-        console.log(234, res)
-        return { dataList: res.data }
-      }).catch(e => {
-        error({ statusCode: 404, message: 'Post not found' })
+        console.log(234, res.data)
+        return { dataList: res.data.data }
       })
   },
   data() {

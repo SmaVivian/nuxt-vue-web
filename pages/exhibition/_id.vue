@@ -12,16 +12,16 @@
 <script>
 import axios from "axios";
 export default {
-  asyncData({ params, error, $http }) {
+  asyncData({ params, error, $request }) {
     console.log('params', params)
     let { id } = params
-    return $http
+    return $request
         // .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getShowDetail.do?id=${id}`)
       .get(`/admin/pc/esaleShow/getShowDetail.do`, {
         id: id
       }).then(res => {
         console.log(234, res.data)
-        return { detailData: res.data }
+        return { detailData: res.data.data }
       }).catch(e => {
         error({ statusCode: 404, message: 'Post not found' })
       })

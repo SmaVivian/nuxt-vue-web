@@ -18,5 +18,5 @@ export default ({ app: { $axios } }, inject) => {
       })
     }
   })
-  inject('http', requestList)
+  inject('request', requestList)
 }

@@ -82,7 +82,7 @@ export default {
   plugins: [
     '@/plugins/element-ui',
     '~/plugins/axios',
-    '~/plugins/http',
+    '~/plugins/request',
     '~/plugins/vue-global.js',
     '~/plugins/i18n.js'
   ],
@@ -117,21 +117,26 @@ export default {
     // }`,
   },
  
-  proxy: {
-    '/admin': { 
-      target: 'http://www.jnmuseum.com', // 目标接口域名
-      ws: false,
-      changeOrigin: true
-      // pathRewrite: {
-      //   '^/admin': '/', // 把 /api 替换成 /
-      // }    
-    },
-  },
+  // proxy: {
+  //   '/admin': { 
+  //     target: 'http://www.jnmuseum.com', // 目标接口域名
+  //     ws: false,
+  //     changeOrigin: true
+  //     // pathRewrite: {
+  //     //   '^/admin': '/', // 把 /api 替换成 /
+  //     // }    
+  //   },
+  // },
+
+  proxy: [
+    // ['/dog', { target: 'https://dog.ceo/', pathRewrite: { '^/dog': '/api/breeds/image/random' } }]
+    ['/admin', { target: 'http://www.jnmuseum.com' }]
+  ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: [/^element-ui/],
-    vendor: ['axios']
+    // vendor: ['axios']
     // vendor: ['vue-i18n'] // webpack vue-i18n.bundle.js
   }
 }
