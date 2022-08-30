@@ -1,4 +1,8 @@
 export default {
+  server: {
+    port: 8085, // default: 3000
+    host: '0.0.0.0', // default: localhost
+  },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
