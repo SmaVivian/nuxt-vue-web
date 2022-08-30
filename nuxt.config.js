@@ -1,7 +1,14 @@
+import env from './env'
 export default {
   server: {
     port: 8085, // default: 3000
     host: '0.0.0.0', // default: localhost
+  },
+
+  env: {
+    // baseUrl: 'http://127.0.0.1:8087'
+    baseUrl: env[process.env.NODE_ENV].BASE_API,
+    NODE_ENV: env[process.env.NODE_ENV].NODE_ENV
   },
 
   generate: {

@@ -1,5 +1,6 @@
 <template>
   <div class="page-a">
+    <p>环境</p>
     <p class="name ell" style="width:200px">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo asperiores, eveniet non beatae earum hic ipsam! Soluta vero cupiditate vitae blanditiis debitis asperiores iste sed, molestiae libero amet impedit. Amet?</p>
     <el-button type="primary">同意</el-button>
 
@@ -51,10 +52,11 @@ export default {
   //   }
   // },
   asyncData({ params, error, $http }) {
+    console.log('env', process.env.NODE_ENV)
     console.log('params', params)
     // return axios
     return $http
-      .get(`/admin/pc/esaleShow/getListData.do`, {
+      .get(`/pc/esaleShow/getListData.do`, {
         type: 1,
         museumId: '',
         currentPage: 1,
