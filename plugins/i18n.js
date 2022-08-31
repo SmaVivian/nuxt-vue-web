@@ -9,7 +9,8 @@ export default ({ app, store }) => {
     fallbackLocale: 'en',
     messages: {
       'en': require('~/locales/en.json'),
-      'zh': require('~/locales/zh.json')
+      'zh': require('~/locales/zh.json'),
+      'zy': require('~/locales/zy.json')
     }
   });
   app.i18n.path = (link) => {
