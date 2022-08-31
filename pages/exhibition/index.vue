@@ -66,9 +66,9 @@ export default {
   //   }
   // },
   asyncData({ params, $request }) {
-    console.log('params', params)
+    // console.log('params', params)
     return $request
-      .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do`, {
+      .get(`/pc/esaleShow/getListData.do`, {
         // type: 1,
         type: 2,
         museumId: '',

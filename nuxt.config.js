@@ -120,10 +120,13 @@ export default {
   // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
   axios: {
     proxy: true,
+    // 开启代理选项后，baseURL 选项就会失效
     // baseURL: '/admin',
     // baseURL: `http://${process.env.HOST || "localhost"}:${
     //   process.env.PORT || 3000
     // }`,
+    prefix: '/admin',
+    credentials: true
   },
  
   // proxy: {
