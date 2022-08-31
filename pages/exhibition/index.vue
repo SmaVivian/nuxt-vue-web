@@ -68,11 +68,12 @@ export default {
   asyncData({ params, $request }) {
     console.log('params', params)
     return $request
-      .get(`/admin/pc/esaleShow/getListData.do`, {
-        type: 1,
+      .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do`, {
+        // type: 1,
+        type: 2,
         museumId: '',
         currentPage: 1,
-        size: 10
+        size: 100
       }).then(res => {
         console.log(234, res.data)
         return { dataList: res.data.data }

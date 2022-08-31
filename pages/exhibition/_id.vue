@@ -17,7 +17,7 @@ export default {
     let { id } = params
     return $request
         // .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getShowDetail.do?id=${id}`)
-      .get(`/admin/pc/esaleShow/getShowDetail.do`, {
+      .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getShowDetail.do`, {
         id: id
       }).then(res => {
         console.log(234, res.data)

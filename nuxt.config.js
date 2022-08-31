@@ -1,4 +1,5 @@
 // import env from './env'
+const axios = require('axios')
 export default {
   server: {
     port: 8085, // default: 3000
@@ -26,13 +27,21 @@ export default {
     // interval：批量生成文件间隔，
     // crawler：比如我们的页面中有a链接的话，会生成a链接指向的页面的静态页面（早期版本没有提供这个属性），
     // routes：我们想要生成静态页面对应的vue文件路由，它返回一个数组对象
-    routes: [
-      "exhibition/201904171043221005",
-      "exhibition/201812131041341000",
-      "exhibition/201812131039131000",
-      // "products/categories/1/page/1",
-      // "products/page/1"
-    ]
+    // routes: [
+    //   "exhibition/201904171043221005",
+    //   "exhibition/201812131041341000",
+    //   "exhibition/201812131039131000",
+    //   // "products/categories/1/page/1",
+    //   // "products/page/1"
+    // ]
+    routes: function () {
+      return axios.get('http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do?type=2&size=100').then(res => {
+        console.log(res.data)
+        return res.data.data.map(item => {
+          return '/exhibition/' + item.id
+        })
+      })
+    }
   },
 
   // Target: https://go.nuxtjs.dev/config-target
