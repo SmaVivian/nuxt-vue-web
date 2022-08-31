@@ -13,7 +13,8 @@ export default {
   //   NODE_ENV: env[process.env.NODE_ENV].NODE_ENV
   // },
   env: {
-    MODE: process.env.MODE
+    MODE: process.env.MODE,
+    baseUrl: env[process.env.MODE].BASE_API
   },
 
   generate: {

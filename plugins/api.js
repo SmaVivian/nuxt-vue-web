@@ -1,6 +1,7 @@
 export default ({ app: { $request } }, inject) => {
   // let prefix = '/admin'
-  let prefix = 'http://www.jnmuseum.com/admin'
+  // let prefix = 'http://www.jnmuseum.com/admin'
+  let prefix = process.env.baseUrl
   inject('api', {
     getExhibitionData (params = {}) {
       return $request.get(prefix + `/pc/esaleShow/getListData.do`, params)
