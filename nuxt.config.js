@@ -92,6 +92,7 @@ export default {
     '@/plugins/element-ui',
     '~/plugins/axios',
     '~/plugins/request',
+    '~/plugins/api.js',
     '~/plugins/vue-global.js',
     '~/plugins/i18n.js'
   ],
@@ -123,7 +124,7 @@ export default {
     // prefix: 'http://www.jnmuseum.com/admin',
     // prefix: '/admin',
     // prefix: env[process.env.MODE].BASE_API,
-    credentials: true
+    // credentials: true
   },
  
   // proxy: {

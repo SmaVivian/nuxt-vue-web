@@ -66,11 +66,10 @@ export default {
   //     searchList,
   //   }
   // },
-  asyncData({ params, $request }) {
+  asyncData({ app, params, $request }) {
     // console.log('params', params)
     // console.log('env', process.env.MODE)
-    return $request
-      .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do`, {
+    return app.$api.getExhibitionData({
         // type: 1,
         type: 2,
         museumId: '',
@@ -103,9 +102,7 @@ export default {
       // window.open(`/exhibition/${id}` + '/index.html')
     },
     async handleLike() {
-      // console.log(this.detailData)
-      this.$request
-      .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do`, {
+      this.$api.getExhibitionData({
         type: 2,
         museumId: '',
         currentPage: 1,
@@ -113,6 +110,15 @@ export default {
       }).then(res => {
         console.log(234, res.data)
       })
+      // this.$request
+      // .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do`, {
+      //   type: 2,
+      //   museumId: '',
+      //   currentPage: 1,
+      //   size: 100
+      // }).then(res => {
+      //   console.log(234, res.data)
+      // })
     }
   },
   mounted() {
