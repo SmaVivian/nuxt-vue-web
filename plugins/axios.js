@@ -1,14 +1,15 @@
 export default function ({ app: { $axios } }) {
-
+  // $axios.defaults.baseURL = 'http://www.jnmuseum.com'  // 设置无效
+  // $axios.defaults.baseURL = process.env.baseUrl
+	// $axios.defaults.timeout = 30000
   // 创建axios实例
-  let service = $axios.create({
-    baseURL: '/admin', // api 的 base_url
-    // baseURL: '/vivi', // api 的 base_url
-    // baseURL: process.env.BASE_API, // api 的 base_url
-    timeout: 60000 // 请求超时时间
-  })
+  // let service = $axios.create({
+  //   // baseURL: '/admin', // api 的 base_url  设置无效
+  //   // baseURL: process.env.BASE_API, // api 的 base_url  设置无效
+  //   timeout: 60000 // 请求超时时间
+  // })
 
-	service.interceptors.request.use(
+	$axios.interceptors.request.use(
     config => {
       console.log('------', config)
       // config.headers['X-Token'] = $cookies.get('token') || ''
@@ -23,7 +24,7 @@ export default function ({ app: { $axios } }) {
     }
   )
 
-	service.interceptors.response.use(
+	$axios.interceptors.response.use(
     response => {
       console.log('res', response)
       // if (/^[4|5]/.test(response.status)) {

@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "cross-env NODE_ENV=pro nuxt build",
-    "start": "cross-env NODE_ENV=pro nuxt start",
-    "generate": "cross-env NODE_ENV=pro nuxt generate"
+    "dev": "cross-env MODE=dev nuxt",
+    "build": "cross-env MODE=pro nuxt build",
+    "start": "cross-env MODE=pro nuxt start",
+    "generate": "cross-env MODE=pro nuxt generate"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",

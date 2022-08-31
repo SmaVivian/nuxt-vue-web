@@ -1,6 +1,7 @@
 <template>
   <div class="page-a">
     <el-button @click="test">点击测试工具方法</el-button>
+    <el-button @click="handleLike">测试点赞</el-button>
     <p>环境</p>
     <p class="name ell" style="width:200px">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo asperiores, eveniet non beatae earum hic ipsam! Soluta vero cupiditate vitae blanditiis debitis asperiores iste sed, molestiae libero amet impedit. Amet?</p>
     <el-button type="primary">同意</el-button>
@@ -67,8 +68,9 @@ export default {
   // },
   asyncData({ params, $request }) {
     // console.log('params', params)
+    // console.log('env', process.env.MODE)
     return $request
-      .get(`/pc/esaleShow/getListData.do`, {
+      .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do`, {
         // type: 1,
         type: 2,
         museumId: '',
@@ -76,7 +78,7 @@ export default {
         size: 100
       }).then(res => {
         console.log(234, res.data)
-        return { dataList: res.data.data }
+        return { dataList: res.data }
       })
   },
   data() {
@@ -100,6 +102,18 @@ export default {
       // 静态部署、新开页面跳转
       // window.open(`/exhibition/${id}` + '/index.html')
     },
+    async handleLike() {
+      // console.log(this.detailData)
+      this.$request
+      .get(`http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do`, {
+        type: 2,
+        museumId: '',
+        currentPage: 1,
+        size: 100
+      }).then(res => {
+        console.log(234, res.data)
+      })
+    }
   },
   mounted() {
     this.getData()

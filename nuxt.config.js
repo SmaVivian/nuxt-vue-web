@@ -1,4 +1,4 @@
-// import env from './env'
+import env from './env'
 const axios = require('axios')
 export default {
   server: {
@@ -12,9 +12,9 @@ export default {
   //   // baseUrl: env[process.env.NODE_ENV].BASE_API,
   //   NODE_ENV: env[process.env.NODE_ENV].NODE_ENV
   // },
-  // env: {
-  //   baseUrl: 'http://127.0.0.1:8085'
-  // },
+  env: {
+    MODE: process.env.MODE
+  },
 
   generate: {
     // dir: "generateDist",
@@ -35,7 +35,7 @@ export default {
     //   // "products/page/1"
     // ]
     routes: function () {
-      return axios.get('http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do?type=2&size=100').then(res => {
+      return axios.get('http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do?type=2&size=3').then(res => {
         console.log(res.data)
         return res.data.data.map(item => {
           return '/exhibition/' + item.id
@@ -120,12 +120,9 @@ export default {
   // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
   axios: {
     proxy: true,
-    // 开启代理选项后，baseURL 选项就会失效
-    // baseURL: '/admin',
-    // baseURL: `http://${process.env.HOST || "localhost"}:${
-    //   process.env.PORT || 3000
-    // }`,
-    prefix: '/admin',
+    // prefix: 'http://www.jnmuseum.com/admin',
+    // prefix: '/admin',
+    // prefix: env[process.env.MODE].BASE_API,
     credentials: true
   },
  
