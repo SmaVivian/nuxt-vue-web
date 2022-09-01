@@ -10,10 +10,15 @@
 </template>
 
 <script>
-import axios from "axios";
+import { mapState, mapMutations } from 'vuex'
 export default {
   asyncData({ params, error, $http }) {
     
+  },
+  computed: {
+    ...mapState([
+      'locale'
+    ]),
   },
   data() {
     return {
@@ -21,12 +26,16 @@ export default {
     }
   },
   methods: {
+    ...mapMutations({
+      'SET_LANG': 'SET_LANG'
+    }),
     // 改变语言
     changeLan() {
-      console.log(11)
-      // let locale = this.locale === 'zh' ? 'en' : 'zh'
-      // this.$i18n.locale = locale
-      // this.SET_LANG(locale)
+      console.log(11, this.locale)
+      let locale = this.locale === 'zh' ? 'en' : 'zh'
+      this.$i18n.locale = locale
+      // this.SET_LANG(locale)   // 方式1
+      this.$store.commit('SET_LANG', this.locale === 'zh' ? 'en' : 'zh')   // 方式2
       // this.$cookies.set('lang', locale)
     }
   }
