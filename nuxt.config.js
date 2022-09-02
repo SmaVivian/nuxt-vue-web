@@ -67,7 +67,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    'swiper/swiper-bundle.css',
+    // 'swiper/swiper-bundle.css',
     'video.js/dist/video-js.css',
     // 'element-ui/lib/theme-chalk/index.css',
     '~/assets/css/reset.css',
