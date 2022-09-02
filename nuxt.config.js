@@ -67,6 +67,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    'swiper/swiper-bundle.css',
     'video.js/dist/video-js.css',
     // 'element-ui/lib/theme-chalk/index.css',
     '~/assets/css/reset.css',
@@ -98,6 +99,7 @@ export default {
     '~/plugins/vue-global.js',
     '~/plugins/i18n.js',
     { src: '~plugins/video', ssr: false }, // 不启用服务器端渲染
+    { src: "~/plugins/swiper.js", ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
