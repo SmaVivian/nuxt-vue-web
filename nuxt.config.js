@@ -67,6 +67,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    'video.js/dist/video-js.css',
     // 'element-ui/lib/theme-chalk/index.css',
     '~/assets/css/reset.css',
     '~/assets/scss/theme.scss'
@@ -95,7 +96,8 @@ export default {
     '~/plugins/request',
     '~/plugins/api.js',
     '~/plugins/vue-global.js',
-    '~/plugins/i18n.js'
+    '~/plugins/i18n.js',
+    { src: '~plugins/video', ssr: false }, // 不启用服务器端渲染
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
