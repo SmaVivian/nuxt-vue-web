@@ -35,14 +35,75 @@ export default {
     //   // "products/categories/1/page/1",
     //   // "products/page/1"
     // ]
-    routes: function () {
-      return axios.get('http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do?type=2&size=3').then(res => {
-        console.log(res.data)
-        return res.data.data.map(item => {
-          return '/exhibition/' + item.id
+    // routes: function () {
+    //   return axios.get('http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do?type=2&size=2').then(res => {
+    //     console.log(res.data)
+    //     return res.data.data.map(item => {
+    //       return '/exhibition/' + item.id
+    //     })
+    //   })
+    // }
+    routes() {
+      let arr = []
+      let ff = [1,2,3,4];
+      arr.push(
+        axios.get('http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do?type=2&size=10').then(res => {
+          console.log(res.data)
+          return res.data.data.map(item => {
+            return '/exhibition/' + item.id
+          })
         })
-      })
-    }
+      )
+      // arr [['/exhibition/202106251457201034', '/exhibition/202107011423331040']]
+      arr.push(
+        axios.get('http://www.jnmuseum.com/admin/pc/esaleShow/getListData.do?type=2&size=2').then(res => {
+          console.log(res.data)
+          return res.data.data.map(item => {
+            return '/test/' + item.id
+          })
+        })
+      )
+
+      let myArr = []
+      return Promise.all([...arr])
+        .then((d) => {
+          d.map(item => {
+            myArr = myArr.concat(item)
+          })
+          // myArr.push('/photo?currentPage=2')
+          // myArr.push({
+          //   route: '/photo',
+          //   query: {
+          //     currentPage: 2
+          //   }
+          // })
+          return myArr;
+        })
+        .catch(() => {
+          return [];
+        })
+
+      // return arr [0]
+      // for (let i = 0; i < ff.length; i++) {
+      //   arr.push(
+      //     new Promise((resolve, reject) => {
+      //       resolve({
+      //         route: "/photo",
+      //         query: {currentPage: ff[i]},
+      //       });
+      //     })
+      //   );
+      // }
+      
+      // return Promise.all([...arr])
+      //   .then((d) => {
+      //     arr = null;
+      //     return d[0];
+      //   })
+      //   .catch(() => {
+      //     return [];
+      //   });
+    },
   },
 
   // Target: https://go.nuxtjs.dev/config-target
